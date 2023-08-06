@@ -8,8 +8,8 @@ function Cart() {
 
 
 	let sum = 0;
-	const summOfPiecies = order.forEach((item )=> {
-		sum +=item.quantity
+	order.forEach((item) => {
+		sum += item.quantity
 	});
 
 
