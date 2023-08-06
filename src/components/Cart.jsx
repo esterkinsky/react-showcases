@@ -2,11 +2,16 @@ import React, { useContext } from 'react';
 import { ShopContext } from '../context';
 
 
-function Cart(props) {
+function Cart() {
 
 	const { order, handleBasketShow = Function.prototype } = useContext(ShopContext);
 
-	const quantity = order.length;
+
+	let sum = 0;
+	const summOfPiecies = order.forEach((item )=> {
+		sum +=item.quantity
+	});
+
 
 	return (
 		<div
@@ -14,8 +19,8 @@ function Cart(props) {
 			onClick={handleBasketShow}
 		>
 			<i className='tiny material-icons'>shopping_cart</i>
-			{quantity ? (
-				<span className='cart-quantity'>{'(' + quantity + ')'}</span>
+			{sum ? (
+				<span className='cart-quantity'>{'(' + sum + ')'}</span>
 			) : null}
 		</div>
 	);
