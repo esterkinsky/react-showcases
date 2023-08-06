@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
+import { ShopContext } from '../context';
 
-export default function Alert(props) {
-	const { displayName = '', closeAlert = Function.prototype } = props;
+export default function Alert() {
+	const { alertName = '', closeAlert } = useContext(ShopContext);
 
 	useEffect(() => {
 		const timerId = setTimeout(closeAlert, 3000);
@@ -9,11 +10,11 @@ export default function Alert(props) {
 		return () => {
 			clearTimeout(timerId);
 		};
-	}, [displayName]);
+	}, [alertName]);
 
 	return (
 		<div id='toast-container'>
-			<div className='toast pink lighten-4'>{displayName} добавлен в корзину</div>
+			<div className='toast pink lighten-4'>{alertName} добавлен в корзину</div>
 		</div>
 	);
 }

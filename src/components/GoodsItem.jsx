@@ -1,3 +1,6 @@
+import { useContext } from 'react'
+import { ShopContext } from '../context';
+
 export default function GoodsItem(props) {
 
 	const {
@@ -6,9 +9,9 @@ export default function GoodsItem(props) {
 		displayDescription,
 		price,
 		displayAssets,
-		addToBasket = Function.prototype
 	} = props;
 
+	const { addToBasket } = useContext(ShopContext);
 	const busketPrice = price.regularPrice;
 
 	return <>
